@@ -18,7 +18,7 @@ const LancheSchema = new mongoose.Schema({
         required: true,
     },
     
-    preco:{
+    precoUnitario:{
         type: Number,
         required: true,
     },
