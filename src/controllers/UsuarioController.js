@@ -1,29 +1,36 @@
 const mongoose = require("mongoose")
-const User = mongoose.model("Usuario")
+const Usuario = mongoose.model("Usuario")
 
 module.exports = {
 
+    //lista lanche com paginacao PARA TESTES
+    async index(req, res){
+        const {page = 1} = req.query
+        const user = await Usuario.paginate({}, {page, limit: 6})
+        return res.json(user)
+    },
+
     //mostra um usuario em especifico
     async show(req, res){
-        const User = await User.findById(req.params.id)
-        return res.json(User)
+        const user = await Usuario.findById(req.params.id)
+        return res.json(user)
     },
 
     //cria um novo usuario
     async store(req, res){
-        const User = await User.create(req.body)
-        return res.json(User)
+        const user = await Usuario.create(req.body)
+        return res.json(user)
     },
 
     //atualiza um usuario existente
     async update(req, res){
-        const User = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        return res.json(User)
+        const user = await Usuario.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        return res.json(user)
     },
 
     //deleta um usuario
     async destroy(req, res){
-        await User.findByIdAndRemove(req.params.id)
+        await Usuario.findByIdAndRemove(req.params.id)
         return res.send()
     }
 }

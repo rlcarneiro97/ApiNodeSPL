@@ -4,6 +4,7 @@ const UsuarioController = require("./controllers/UsuarioController")
 const LancheController = require("./controllers/LancheController")
 
 //rotas para manipulacao de um usuario
+routes.get("/user/index/", UsuarioController.index) //para testes
 routes.get("/user/show/:id", UsuarioController.show)
 routes.post("/user/store/", UsuarioController.store)
 routes.put("/user/update/:id", UsuarioController.update)

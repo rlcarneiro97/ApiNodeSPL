@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-// const mongoosePaginate = require("mongoose-paginate")
+const mongoosePaginate = require("mongoose-paginate")
 
 const UsuarioSchema = new mongoose.Schema({
     
@@ -30,7 +30,7 @@ const UsuarioSchema = new mongoose.Schema({
 })
 
 //apontar que esse schema usa paginacao
-// UsuarioSchema.plugin(mongoosePaginate)
+UsuarioSchema.plugin(mongoosePaginate)
 
 //criando schema de Usuario
 mongoose.model("Usuario", UsuarioSchema)
