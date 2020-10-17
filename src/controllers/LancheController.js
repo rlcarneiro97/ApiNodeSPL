@@ -30,7 +30,7 @@ module.exports = {
 
     //deleta um lanche
     async destroy(req, res){
-        await lanche.findByIdAndRemove(req.params.id)
+        await Lanche.findByIdAndRemove(req.params.id)
         return res.send()
     }
 }
