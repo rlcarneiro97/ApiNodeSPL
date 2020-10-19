@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
 const mongoosePaginate = require("mongoose-paginate")
 
-const CarrinhoSchema = new mongoose.Schema({
+const PedidoSchema = new mongoose.Schema({
 
-    listaLanches:{
+    listaPedido:{
         type: [Object],
         required: true,
     },
@@ -30,7 +30,7 @@ const CarrinhoSchema = new mongoose.Schema({
 })
 
 //apontar que esse schema usa paginacao
-CarrinhoSchema.plugin(mongoosePaginate)
+PedidoSchema.plugin(mongoosePaginate)
 
-//criando schema de Carrinho
-mongoose.model("Carrinho", CarrinhoSchema)
+//criando schema de Pedido
+mongoose.model("Pedido", PedidoSchema)

@@ -22,6 +22,11 @@ const UsuarioSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    usuarioTipo:{
+        type: String,
+        required: true,
+    },
     
     createdAt:{
         type: Date,

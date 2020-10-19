@@ -3,12 +3,12 @@ const Usuario = mongoose.model("Usuario")
 
 module.exports = {
 
-    //lista lanche com paginacao PARA TESTES
-    async index(req, res){
-        const {page = 1} = req.query
-        const user = await Usuario.paginate({}, {page, limit: 6})
-        return res.json(user)
-    },
+    //lista usuario com paginacao PARA TESTES
+    // async index(req, res){
+    //     const {page = 1} = req.query
+    //     const user = await Usuario.paginate({}, {page, limit: 1})
+    //     return res.json(user)
+    // },
 
     //mostra um usuario em especifico
     async show(req, res){
