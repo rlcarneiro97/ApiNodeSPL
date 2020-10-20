@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const AuthController = require("./authController")
 const Usuario = mongoose.model("Usuario")
 
 module.exports = {
@@ -16,11 +17,11 @@ module.exports = {
         try {
             if(await Usuario.findOne({email}) ){
                 return res.status(400).send({error: "Usuário já existe"})
-            } 
+            }
         
             const user = await Usuario.create(req.body)
             user.senha = undefined
-            return res.send(user)
+            return res.send({user, token: AuthController.geraToken({id: user.id})})
 
         } catch (error) {
             return res.status(400).send({error: "Falha no cadastro"})
