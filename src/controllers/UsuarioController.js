@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const AuthController = require("./authController")
+const AuthController = require("./AuthController")
 const Usuario = mongoose.model("Usuario")
 
 module.exports = {

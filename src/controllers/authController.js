@@ -23,7 +23,9 @@ module.exports = {
         }
 
         user.senha = undefined
-        res.send( {user, token: geraToken({id: user.id}) })
+        token = jwt.sign({id: user.id}, authConfig.secret, {expiresIn: 86400})
+
+        res.send( {user, token: token})
 
     }
 

@@ -1,6 +1,6 @@
 const express = require("express")
 const routes = express.Router()
-const AuthController = require("./controllers/authController")
+const AuthController = require("./controllers/AuthController")
 const UsuarioController = require("./controllers/UsuarioController")
 const LancheController = require("./controllers/LancheController")
 const PedidoController = require("./controllers/PedidoController")
@@ -8,7 +8,7 @@ const authMiddleware = require("../middlewares/auth")
 
 routes.get("/", function(req, res){ res.send("Api Node SPL V1") })
 
-routes.post("/authenticate/", AuthController.auth)
+routes.post("/auth/", AuthController.auth)
 
 //rotas para manipulacao de um usuario
 routes.get("/user/show/:id", authMiddleware, UsuarioController.show)
