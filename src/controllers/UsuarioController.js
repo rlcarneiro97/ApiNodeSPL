@@ -3,13 +3,6 @@ const Usuario = mongoose.model("Usuario")
 
 module.exports = {
 
-    //lista usuario com paginacao PARA TESTES
-    // async index(req, res){
-    //     const {page = 1} = req.query
-    //     const user = await Usuario.paginate({}, {page, limit: 1})
-    //     return res.json(user)
-    // },
-
     //mostra um usuario em especifico
     async show(req, res){
         const user = await Usuario.findById(req.params.id)
@@ -18,8 +11,20 @@ module.exports = {
 
     //cria um novo usuario
     async store(req, res){
-        const user = await Usuario.create(req.body)
-        return res.json(user)
+        const {email} = req.body
+        
+        try {
+            if(await Usuario.findOne({email}) ){
+                return res.status(400).send({error: "Usuário já existe"})
+            } 
+        
+            const user = await Usuario.create(req.body)
+            user.senha = undefined
+            return res.send(user)
+
+        } catch (error) {
+            return res.status(400).send({error: "Falha no cadastro"})
+        }
     },
 
     //atualiza um usuario existente

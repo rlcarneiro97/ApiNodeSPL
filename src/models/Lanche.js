@@ -22,6 +22,11 @@ const LancheSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+
+    imgUrl:{
+        type: String,
+        required:true,
+    },
     
     createdAt:{
         type: Date,
